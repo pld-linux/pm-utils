@@ -35,9 +35,12 @@ związanych z zarządzaniem energią.
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_var}/log
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+touch $RPM_BUILD_ROOT%{_var}/log/pm-suspend.log
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -65,3 +68,5 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_sbindir}/pm-powersave
 %attr(755,root,root) %{_sbindir}/pm-suspend
 %attr(755,root,root) %{_sbindir}/pm-suspend-hybrid
+%{_mandir}/man1/*.1*
+%ghost %{_var}/log/pm-suspend.log
