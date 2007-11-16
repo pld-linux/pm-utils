@@ -2,7 +2,7 @@ Summary:	Power management utilities and scripts
 Summary(pl.UTF-8):	Narzędzia i skrypty do zarządzania energią
 Name:		pm-utils
 Version:	0.99.4
-Release:	0.2
+Release:	1
 License:	GPL v2
 Group:		Applications/System
 Source0:	http://cvs.fedoraproject.org/repo/pkgs/pm-utils/pm-utils-0.99.4.tar.gz/a88503876f63c96b55784be91b6458d2/%{name}-%{version}.tar.gz
