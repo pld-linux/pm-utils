@@ -1,17 +1,19 @@
 Summary:	Power management utilities and scripts
 Summary(pl.UTF-8):	Narzędzia i skrypty do zarządzania energią
 Name:		pm-utils
-Version:	0.99.4
+Version:	1.1.0
 Release:	1
 License:	GPL v2
 Group:		Applications/System
-Source0:	http://cvs.fedoraproject.org/repo/pkgs/pm-utils/pm-utils-0.99.4.tar.gz/a88503876f63c96b55784be91b6458d2/%{name}-%{version}.tar.gz
-# Source0-md5:	a88503876f63c96b55784be91b6458d2
-Patch0:		%{name}-cfg.patch
-Patch1:		%{name}-uswsusp-support.patch
+Source0:	http://pm-utils.freedesktop.org/releases/%{name}-%{version}.tar.gz
+# Source0-md5:	a9fcb1ee69ddc24bcc174ebf56f2cf11
 URL:		http://pm-utils.freedesktop.org/
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
+Requires:	hal
+%ifarch %{ix86} %{x8664}
+Requires:	vbetool
+%endif
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -24,8 +26,6 @@ związanych z zarządzaniem energią.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 
 %build
 %{__aclocal}
@@ -60,15 +60,21 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/pm-utils/bin/pm-action
 %attr(755,root,root) %{_libdir}/pm-utils/bin/pm-pmu
 %attr(755,root,root) %{_libdir}/pm-utils/bin/pm-reset-swap
+%dir %{_libdir}/pm-utils/module.d
+%attr(755,root,root) %{_libdir}/pm-utils/module.d/kernel
+%attr(755,root,root) %{_libdir}/pm-utils/module.d/tuxonice
+%attr(755,root,root) %{_libdir}/pm-utils/module.d/uswsusp
 %dir %{_libdir}/pm-utils/power.d
 %attr(755,root,root) %{_libdir}/pm-utils/power.d/sched-powersave
 %dir %{_libdir}/pm-utils/sleep.d
 %attr(755,root,root) %{_libdir}/pm-utils/sleep.d/*
 %{_libdir}/pm-utils/defaults
 %{_libdir}/pm-utils/functions
+%{_libdir}/pm-utils/pm-functions
 %attr(755,root,root) %{_sbindir}/pm-hibernate
 %attr(755,root,root) %{_sbindir}/pm-powersave
 %attr(755,root,root) %{_sbindir}/pm-suspend
 %attr(755,root,root) %{_sbindir}/pm-suspend-hybrid
 %{_mandir}/man1/*.1*
+%{_pkgconfigdir}/pm-utils.pc
 %ghost %{_var}/log/pm-suspend.log
