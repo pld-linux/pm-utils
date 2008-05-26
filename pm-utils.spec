@@ -1,12 +1,12 @@
 Summary:	Power management utilities and scripts
 Summary(pl.UTF-8):	Narzędzia i skrypty do zarządzania energią
 Name:		pm-utils
-Version:	1.1.1
+Version:	1.1.2
 Release:	1
 License:	GPL v2
 Group:		Applications/System
 Source0:	http://pm-utils.freedesktop.org/releases/%{name}-%{version}.tar.gz
-# Source0-md5:	db6e9386a5523c5bea739317be83c38e
+# Source0-md5:	7c382d9297317040b82ddc3ea2cd6d80
 URL:		http://pm-utils.freedesktop.org/
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
@@ -76,5 +76,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_sbindir}/pm-suspend
 %attr(755,root,root) %{_sbindir}/pm-suspend-hybrid
 %{_mandir}/man1/*.1*
+%{_mandir}/man8/*.8*
 %{_pkgconfigdir}/pm-utils.pc
 %ghost %{_var}/log/pm-suspend.log
