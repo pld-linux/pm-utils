@@ -10,6 +10,7 @@ Source0:	http://pm-utils.freedesktop.org/releases/%{name}-%{version}.tar.gz
 URL:		http://pm-utils.freedesktop.org/
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
+BuildRequires:	xmlto
 Requires:	hal
 %ifarch %{ix86} %{x8664}
 Requires:	vbetool
