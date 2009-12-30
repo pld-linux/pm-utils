@@ -1,12 +1,12 @@
 Summary:	Power management utilities and scripts
 Summary(pl.UTF-8):	Narzędzia i skrypty do zarządzania energią
 Name:		pm-utils
-Version:	1.2.5
+Version:	1.2.6.1
 Release:	1
 License:	GPL v2
 Group:		Applications/System
 Source0:	http://pm-utils.freedesktop.org/releases/%{name}-%{version}.tar.gz
-# Source0-md5:	f69db402e1869321cac72ffd2f77fa99
+# Source0-md5:	ddbb73b5fd1e5a2c77ad3ce537a0260c
 URL:		http://pm-utils.freedesktop.org/
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
