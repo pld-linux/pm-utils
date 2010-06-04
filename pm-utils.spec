@@ -1,12 +1,12 @@
 Summary:	Power management utilities and scripts
 Summary(pl.UTF-8):	Narzędzia i skrypty do zarządzania energią
 Name:		pm-utils
-Version:	1.2.6.1
+Version:	1.3.0
 Release:	1
 License:	GPL v2
 Group:		Applications/System
 Source0:	http://pm-utils.freedesktop.org/releases/%{name}-%{version}.tar.gz
-# Source0-md5:	ddbb73b5fd1e5a2c77ad3ce537a0260c
+# Source0-md5:	37d71f8adbb409442212a85a080d324d
 URL:		http://pm-utils.freedesktop.org/
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
@@ -58,6 +58,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_sysconfdir}/pm/config.d
 %dir %{_sysconfdir}/pm/power.d
 %dir %{_sysconfdir}/pm/sleep.d
+%attr(755,root,root) %{_bindir}/import-fdi-quirkdb
 %attr(755,root,root) %{_bindir}/on_ac_power
 %attr(755,root,root) %{_bindir}/pm-is-supported
 %dir %{_libdir}/pm-utils
