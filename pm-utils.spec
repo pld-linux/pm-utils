@@ -1,17 +1,16 @@
 Summary:	Power management utilities and scripts
 Summary(pl.UTF-8):	Narzędzia i skrypty do zarządzania energią
 Name:		pm-utils
-Version:	1.3.0
+Version:	1.4.1
 Release:	1
 License:	GPL v2
 Group:		Applications/System
 Source0:	http://pm-utils.freedesktop.org/releases/%{name}-%{version}.tar.gz
-# Source0-md5:	37d71f8adbb409442212a85a080d324d
+# Source0-md5:	1742a556089c36c3a89eb1b957da5a60
 URL:		http://pm-utils.freedesktop.org/
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	xmlto
-Requires:	hal
 %ifarch %{ix86} %{x8664}
 Requires:	vbetool
 %endif
@@ -58,7 +57,6 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_sysconfdir}/pm/config.d
 %dir %{_sysconfdir}/pm/power.d
 %dir %{_sysconfdir}/pm/sleep.d
-%attr(755,root,root) %{_bindir}/import-fdi-quirkdb
 %attr(755,root,root) %{_bindir}/on_ac_power
 %attr(755,root,root) %{_bindir}/pm-is-supported
 %dir %{_libdir}/pm-utils
@@ -66,12 +64,13 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/pm-utils/bin/pm-action
 %attr(755,root,root) %{_libdir}/pm-utils/bin/pm-pmu
 %attr(755,root,root) %{_libdir}/pm-utils/bin/pm-reset-swap
+%attr(755,root,root) %{_libdir}/pm-utils/bin/service
 %dir %{_libdir}/pm-utils/module.d
 %attr(755,root,root) %{_libdir}/pm-utils/module.d/kernel
 %attr(755,root,root) %{_libdir}/pm-utils/module.d/tuxonice
 %attr(755,root,root) %{_libdir}/pm-utils/module.d/uswsusp
 %dir %{_libdir}/pm-utils/power.d
-%attr(755,root,root) %{_libdir}/pm-utils/power.d/sched-powersave
+%attr(755,root,root) %{_libdir}/pm-utils/power.d/*
 %dir %{_libdir}/pm-utils/sleep.d
 %attr(755,root,root) %{_libdir}/pm-utils/sleep.d/*
 %{_libdir}/pm-utils/defaults
