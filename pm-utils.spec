@@ -83,4 +83,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*.1*
 %{_mandir}/man8/*.8*
 %{_pkgconfigdir}/pm-utils.pc
+%ghost %{_var}/log/pm-powersave.log
 %ghost %{_var}/log/pm-suspend.log
