@@ -1,12 +1,15 @@
+%define	quirkver	20100619
 Summary:	Power management utilities and scripts
 Summary(pl.UTF-8):	Narzędzia i skrypty do zarządzania energią
 Name:		pm-utils
 Version:	1.4.1
-Release:	3
+Release:	4
 License:	GPL v2
 Group:		Applications/System
 Source0:	http://pm-utils.freedesktop.org/releases/%{name}-%{version}.tar.gz
 # Source0-md5:	1742a556089c36c3a89eb1b957da5a60
+Source1:	http://pm-utils.freedesktop.org/releases/pm-quirks-%{quirkver}.tar.gz
+# Source1-md5:	3b6ee39056b9ece0cd5e073a4c272b05
 Patch0:		bashism.patch
 URL:		http://pm-utils.freedesktop.org/
 BuildRequires:	autoconf >= 2.52
@@ -26,7 +29,7 @@ Pakiet pm-utils zawiera narzędzia i skrypty pomocne przy zadaniach
 związanych z zarządzaniem energią.
 
 %prep
-%setup -q
+%setup -q -a1
 %patch0 -p1
 
 %build
@@ -44,7 +47,10 @@ install -d $RPM_BUILD_ROOT%{_var}/log
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-touch $RPM_BUILD_ROOT%{_var}/log/pm-suspend.log
+# Install quirks
+cp -a video-quirks $RPM_BUILD_ROOT%{_libdir}/pm-utils
+
+touch $RPM_BUILD_ROOT%{_var}/log/pm-{powersave,suspend}.log
 
 # included via %doc
 rm -rf $RPM_BUILD_ROOT%{_docdir}/pm-utils
@@ -78,6 +84,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pm-utils/defaults
 %{_libdir}/pm-utils/functions
 %{_libdir}/pm-utils/pm-functions
+%{_libdir}/pm-utils/video-quirks
 %attr(755,root,root) %{_sbindir}/pm-hibernate
 %attr(755,root,root) %{_sbindir}/pm-powersave
 %attr(755,root,root) %{_sbindir}/pm-suspend
