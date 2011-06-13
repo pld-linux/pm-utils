@@ -3,7 +3,7 @@ Summary:	Power management utilities and scripts
 Summary(pl.UTF-8):	Narzędzia i skrypty do zarządzania energią
 Name:		pm-utils
 Version:	1.4.1
-Release:	4
+Release:	5
 License:	GPL v2
 Group:		Applications/System
 Source0:	http://pm-utils.freedesktop.org/releases/%{name}-%{version}.tar.gz
@@ -17,7 +17,8 @@ BuildRequires:	automake
 BuildRequires:	xmlto
 Requires:	hdparm
 Requires:	kbd
-Requires:	radeontool
+Suggests:	radeontool
+Suggests:	vbetool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
