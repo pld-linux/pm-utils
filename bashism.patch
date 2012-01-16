@@ -10,3 +10,40 @@ bash specific comparision:
  
  . "${PM_FUNCTIONS}"
  
+
+
+try_lock() needs shell-descriptor-redirection feature.
+/bin/mksh can't handle it, so use already pulled /bin/bash.
+
+--- pm-utils-1.4.1.orig/pm/functions.in	2010-07-04 16:50:13.000000000 +0200
++++ pm-utils-1.4.1/pm/functions.in	2012-01-16 19:44:51.862113904 +0100
+@@ -1,4 +1,4 @@
+-#!/bin/sh
++#!/bin/bash
+ # vim:noexpandtab
+ 
+ # Common functionality for the hooks.
+--- pm-utils-1.4.1.orig/pm/pm-functions.in	2010-07-04 16:50:13.000000000 +0200
++++ pm-utils-1.4.1/pm/pm-functions.in	2012-01-16 19:45:04.506023549 +0100
+@@ -1,4 +1,4 @@
+-#!/bin/sh
++#!/bin/bash
+ # vim:noexpandtab
+ 
+ 
+--- pm-utils-1.4.1.orig/src/pm-action.in	2010-07-04 16:42:51.000000000 +0200
++++ pm-utils-1.4.1/src/pm-action.in	2012-01-16 19:41:15.455583368 +0100
+@@ -1,4 +1,4 @@
+-#!/bin/sh
++#!/bin/bash
+ # vim: noexpandtab
+ # Simple suspend script
+ #
+--- pm-utils-1.4.1.orig/src/pm-powersave.in	2010-07-04 16:50:13.000000000 +0200
++++ pm-utils-1.4.1/src/pm-powersave.in	2012-01-16 19:42:27.115516315 +0100
+@@ -1,4 +1,4 @@
+-#!/bin/sh
++#!/bin/bash
+ # vim:noexpandtab
+ # Simple powersave script
+ #
