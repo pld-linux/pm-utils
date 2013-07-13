@@ -1,0 +1,62 @@
+# Patch sent upstream
+diff -up pm-utils-1.4.1/man/pm-action.8.orig pm-utils-1.4.1/man/pm-action.8
+--- pm-utils-1.4.1/man/pm-action.8.orig	2010-07-04 16:54:58.000000000 +0200
++++ pm-utils-1.4.1/man/pm-action.8	2013-07-01 15:44:34.000000000 +0200
+@@ -86,11 +86,21 @@ This option forces the video hardware to
+ This option forces the video hardware to turn off the screen when suspending\&. Most video adapters seem to do this correctly, but some do not, which wastes lots of power\&. If your screen is still on after successfully suspending you may need to use this option\&.
+ .RE
+ .PP
++\fB\-\-quirk\-none\fR
++.RS 4
++This option disables quirks.
++.RE
++.PP
+ \fB\-\-quirk\-radeon\-off\fR
+ .RS 4
+ This option forces Radeon hardware to turn off the display during suspend and turn it back on during resume\&. You only need to do this on some old ThinkPads of the \'30 series (T30, X31, R32,\&.\&.\&. ) with Radeon video hardware\&.
+ .RE
+ .PP
++\fB\-\-quirk\-reset\-brigthness\fR
++.RS 4
++This option resets display brightness during resume (i.e. sets the brightness to 0 and returns it to the previous value).
++.RE
++.PP
+ \fB\-\-quirk\-s3\-bios\fR
+ .RS 4
+ This option calls the video BIOS during S3 resume\&. Unfortunately, it is not always allowed to call the video BIOS at this point, so sometimes adding this option can actually break resume on some systems\&.
+diff -up pm-utils-1.4.1/man/pm-powersave.8.orig pm-utils-1.4.1/man/pm-powersave.8
+--- pm-utils-1.4.1/man/pm-powersave.8.orig	2010-07-04 16:54:56.000000000 +0200
++++ pm-utils-1.4.1/man/pm-powersave.8	2013-07-01 16:11:12.939103092 +0200
+@@ -22,7 +22,7 @@
+ pm-powersave \- Put your computer into low power mode
+ .SH "SYNOPSIS"
+ .HP \w'\fBpm\-powersave\fR\ 'u
+-\fBpm\-powersave\fR [{\fBtrue\fR\ |\ \fBfalse\fR}]
++\fBpm\-powersave\fR [{\fBtrue\fR\ |\ \fBfalse\fR}] [\fB\-\-help\fR]
+ .SH "DESCRIPTION"
+ .PP
+ This manual page documents briefly the
+@@ -43,6 +43,11 @@ Put the computer into low power mode to
+ .RS 4
+ Turn off low power mode\&.
+ .RE
++.PP
++\fB\-\-help\fR
++.RS 4
++Show the help.
++.RE
+ .SH "FILES"
+ .PP
+ /etc/pm/power\&.d/, /usr/lib/pm\-utils/power\&.d/
+diff -up pm-utils-1.4.1/src/pm-action.in.orig pm-utils-1.4.1/src/pm-action.in
+--- pm-utils-1.4.1/src/pm-action.in.orig	2010-07-04 16:42:51.000000000 +0200
++++ pm-utils-1.4.1/src/pm-action.in	2013-07-01 15:03:15.000000000 +0200
+@@ -37,6 +37,8 @@ help()
+ 	echo "${0##*/} [options]"
+ 	echo
+ 	echo "Options can change how suspend or hibernate is done."
++	echo
++	echo "  --help"
+ 	run_hooks sleep help
+ 	sleep_module_help
+ 	exit 0

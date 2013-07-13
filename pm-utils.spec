@@ -10,7 +10,15 @@ Source0:	http://pm-utils.freedesktop.org/releases/%{name}-%{version}.tar.gz
 # Source0-md5:	1742a556089c36c3a89eb1b957da5a60
 Source1:	http://pm-utils.freedesktop.org/releases/pm-quirks-%{quirkver}.tar.gz
 # Source1-md5:	3b6ee39056b9ece0cd5e073a4c272b05
-Patch0:		bashism.patch
+Patch0:		init-logfile-append.patch
+Patch1:		networkmanager-typo-fix.patch
+Patch2:		grub2.patch
+Patch3:		hook-exit-code-log.patch
+Patch4:		log-line-spacing-fix.patch
+Patch5:		nm_method.patch
+Patch6:		add-in-kernel-suspend-to-both.patch
+Patch7:		man-fix.patch
+Patch10:	bashism.patch
 URL:		http://pm-utils.freedesktop.org/
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
@@ -48,6 +56,14 @@ związanych z zarządzaniem energią.
 %prep
 %setup -q -a1
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch10 -p1
 
 %build
 %{__aclocal}

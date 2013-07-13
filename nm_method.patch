@@ -1,0 +1,40 @@
+# Fix NetworkManager dbus methods (fd.o #42500 / RH #740342)
+From: Michael Wild <themiwi@users.sourceforge.net>
+Date: Wed, 2 Nov 2011 09:27:34 +0100
+Subject: Use correct dbus sleep method for NetworkManager
+
+Bug: https://bugs.freedesktop.org/show_bug.cgi?id=42500
+Bug-Debian: http://bugs.debian.org/647418
+
+The methods org.freedesktop.NetworkManager.{sleep,wake} have been
+replaced in post-6.x NetworkManager by
+org.freedesktop.NetworkManager.Sleep which takes a boolean argument.
+---
+ pm/sleep.d/55NetworkManager |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pm/sleep.d/55NetworkManager b/pm/sleep.d/55NetworkManager
+index a7fefd5..89cd817 100755
+--- a/pm/sleep.d/55NetworkManager
++++ b/pm/sleep.d/55NetworkManager
+@@ -15,7 +15,7 @@
+ 	dbus_send --system                         \
+ 		--dest=org.freedesktop.NetworkManager  \
+ 		/org/freedesktop/NetworkManager        \
+-		org.freedesktop.NetworkManager.sleep && \
++		org.freedesktop.NetworkManager.Sleep boolean:true && \
+ 	    echo Done. || echo Failed.
+ }
+ 
+@@ -26,7 +26,7 @@
+         dbus_send --system                        \
+ 		--dest=org.freedesktop.NetworkManager \
+ 		/org/freedesktop/NetworkManager       \
+-		org.freedesktop.NetworkManager.wake && \
++		org.freedesktop.NetworkManager.Sleep boolean:false && \
+ 	    echo Done. || echo Failed.
+ }
+
+ 
+-- 
+
