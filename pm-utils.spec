@@ -18,6 +18,7 @@ BuildRequires:	xmlto
 Requires:	hdparm
 Requires:	kbd
 Suggests:	radeontool
+Suggests:	vbetool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
