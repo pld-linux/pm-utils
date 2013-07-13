@@ -15,10 +15,26 @@ URL:		http://pm-utils.freedesktop.org/
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	xmlto
+# power.d/readahead
+Requires:	blockdev
+# power.d/disable_wol
+Requires:	ethtool
+# power.d/harddrive
 Requires:	hdparm
+# video and tuxonice
 Requires:	kbd
+# power.d/journal-commit and readahead
+Requires:	mount
+# sleep.d/90clock
+Requires:	util-linux
+# sleep.d/55NetworkManager
+Suggests:	dbus
+# sleep.d/99video
 Suggests:	radeontool
+# sleep.d/99video
 Suggests:	vbetool
+# power.d/wireless
+Suggests:	wireless-tools
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
