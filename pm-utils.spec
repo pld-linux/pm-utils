@@ -35,6 +35,8 @@ Requires:	kbd
 Requires:	mount
 # sleep.d/90clock
 Requires:	util-linux
+# sleep.d/01grub and power.d/wireless
+Requires:	which
 # sleep.d/55NetworkManager
 Suggests:	dbus
 # sleep.d/99video

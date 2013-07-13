@@ -17,7 +17,7 @@ diff -up pm-utils-1.4.1/pm/sleep.d/01grub.orig pm-utils-1.4.1/pm/sleep.d/01grub
  	esac
  
 -	[ -x /sbin/grubby -a -x /sbin/grub ] || return $NA
-+	[ -x /sbin/grubby -a \( -x /sbin/grub -o -r /etc/grub2.cfg \) ] || \
++	[ -x /sbin/grubby -a \( -x /sbin/grub -o -r /boot/grub/grub.cfg \) ] || \
 +		return $NA
  	[ -e "/boot/vmlinuz-$(uname -r)" ] || return 1
 -	out=$(/sbin/grubby --info /boot/vmlinuz-$(uname -r) |grep index)
@@ -28,7 +28,7 @@ diff -up pm-utils-1.4.1/pm/sleep.d/01grub.orig pm-utils-1.4.1/pm/sleep.d/01grub
 -	echo "savedefault --default=${current} --once" | \
 -		/sbin/grub --device-map=/boot/grub/device.map \
 -		--batch --no-floppy --no-curses >/dev/null
-+	if [ -r /etc/grub2.cfg ]; then
++	if [ -r /boot/grub/grub.cfg ]; then
 +		# to enable this functionality in grub2
 +		# GRUB_DEFAULT=saved is needed in /etc/default/grub
 +		# if you want to be able to by-pass the selection in the
