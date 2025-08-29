@@ -1,9 +1,12 @@
+#
+# Dead upstream since 2010
+#
 %define	quirkver	20100619
 Summary:	Power management utilities and scripts
 Summary(pl.UTF-8):	Narzędzia i skrypty do zarządzania energią
 Name:		pm-utils
 Version:	1.4.1
-Release:	9
+Release:	9.1
 License:	GPL v2
 Group:		Applications/System
 Source0:	http://pm-utils.freedesktop.org/releases/%{name}-%{version}.tar.gz
